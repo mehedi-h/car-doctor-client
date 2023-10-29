@@ -11,7 +11,7 @@ const About = () => {
             </div>
             <div className="md:w-1/2 md:space-y-5">
                 <h3 className="md:text-2xl md:font-bold text-red-500">About Us</h3>
-                <h1 className="text-2xl md:text-5xl font-bold w-2/3">We are qualified & of experience in this field</h1>
+                <h1 className="text-2xl md:text-4xl font-bold text-gray-700 w-2/3">We are qualified & of experience in this field</h1>
                 <p>
                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. 
                 </p>
