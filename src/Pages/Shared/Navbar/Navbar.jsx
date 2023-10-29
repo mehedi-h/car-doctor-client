@@ -1,5 +1,23 @@
 import { Link } from "react-router-dom";
-import logo from "../../../assets/logo3.png"
+import logo from "../../../assets/logo.svg"
+
+const navLinks = <>
+    <li>
+        <Link to="/">Home</Link>
+    </li>
+    <li>
+        <Link to="/service">Service</Link>
+    </li>
+    <li>
+        <Link to="blog">Blog</Link>
+    </li>
+    <li>
+        <Link to="about">About</Link>
+    </li>
+    <li>
+        <Link to="contact">Contact</Link>
+    </li>
+</>
 
 const Navbar = () => {
     return (
@@ -26,53 +44,19 @@ const Navbar = () => {
                     tabIndex={0}
                     className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                    <li>
-                    <a>Item 1</a>
-                    </li>
-                    <li>
-                    <a>Parent</a>
-                    <ul className="p-2">
-                        <li>
-                        <a>Submenu 1</a>
-                        </li>
-                        <li>
-                        <a>Submenu 2</a>
-                        </li>
-                    </ul>
-                    </li>
-                    <li>
-                    <a>Item 3</a>
-                    </li>
+                    {navLinks}
                 </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">
+                <Link to='/'>
                     <img
-                        className="md:h-[60px]"
+                        className="h-[40px] md:h-[80px]"
                         src={logo}
                         alt="" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                <li>
-                    <a>Item 1</a>
-                </li>
-                <li tabIndex={0}>
-                    <details>
-                    <summary>Parent</summary>
-                    <ul className="p-2">
-                        <li>
-                        <a>Submenu 1</a>
-                        </li>
-                        <li>
-                        <a>Submenu 2</a>
-                        </li>
-                    </ul>
-                    </details>
-                </li>
-                <li>
-                    <a>Item 3</a>
-                </li>
+                    {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
