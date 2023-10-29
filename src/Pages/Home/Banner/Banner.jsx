@@ -14,9 +14,9 @@ const Banner = () => {
             src={img1}
             className="w-full rounded-md"
             />
-            <div className="absolute flex gap-5 transform -translate-y-1/2 left-5 right-5 bottom-0">
-                <div className="text-white space-y-7">
-                    <h2 className="md:text-5xl md:font-bold md:w-1/3">
+            <div className="absolute h-full flex items-center gap-5 left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00) 100%)]">
+                <div className="text-white md:space-y-7 md:pl-24">
+                    <h2 className="md:text-5xl md:font-bold md:w-2/5">
                         Affordable Price For Car Servicing</h2>
                     <p>
                         There are many variations of passages of  available, but <br /> the majority have suffered alteration in some form
