@@ -95,9 +95,11 @@ const Navbar = () => {
                     <span className="badge badge-xs badge-primary indicator-item"></span>
                 </div>
                 </button>
-                <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
-                Login
-                </button>
+                <Link to="/login">
+                    <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
+                        Login
+                    </button>
+                </Link>
             </div>
         </div>
     );
