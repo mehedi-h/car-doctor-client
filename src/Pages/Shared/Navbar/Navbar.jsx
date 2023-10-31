@@ -109,18 +109,15 @@ const Navbar = () => {
                     <span className="badge badge-xs badge-primary indicator-item"></span>
                 </div>
                 </button>
-                {/* <Link to="/login">
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
-                        Login
-                    </button>
-                </Link> */}
                 {
-                    user?.email ? 
+                    user?.email? <>
+                        <Link to="/bookings">My Bookings</Link>
                         <button 
                         onClick={handleLogOut}
                         className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
                             Log Out
                         </button>
+                        </>
                         : <Link to="/login">
                         <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
                             Login

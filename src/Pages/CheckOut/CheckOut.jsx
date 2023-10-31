@@ -16,7 +16,8 @@ const CheckOut = () => {
         const name = form.name.value;
         const email = user?.email;
         const date = form.date.value;
-        const order = { customerName: name, 
+        const order = { 
+            customerName: name, 
             email: email,
             image: img, 
             date: date, 
@@ -73,7 +74,7 @@ const CheckOut = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" required />
+                        <input type="text" name="name" defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
