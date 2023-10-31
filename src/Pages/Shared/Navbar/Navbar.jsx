@@ -1,25 +1,39 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg"
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
-const navLinks = <>
-    <li>
-        <Link to="/">Home</Link>
-    </li>
-    <li>
-        <Link to="/service">Service</Link>
-    </li>
-    <li>
-        <Link to="blog">Blog</Link>
-    </li>
-    <li>
-        <Link to="about">About</Link>
-    </li>
-    <li>
-        <Link to="contact">Contact</Link>
-    </li>
-</>
+
 
 const Navbar = () => {
+
+    const navLinks = <>
+        <li>
+            <Link to="/">Home</Link>
+        </li>
+        <li>
+            <Link to="/service">Service</Link>
+        </li>
+        <li>
+            <Link to="blog">Blog</Link>
+        </li>
+        <li>
+            <Link to="about">About</Link>
+        </li>
+        <li>
+            <Link to="contact">Contact</Link>
+        </li>
+    </> 
+
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+        .then( () => {})
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -95,11 +109,25 @@ const Navbar = () => {
                     <span className="badge badge-xs badge-primary indicator-item"></span>
                 </div>
                 </button>
-                <Link to="/login">
+                {/* <Link to="/login">
                     <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
                         Login
                     </button>
-                </Link>
+                </Link> */}
+                {
+                    user?.email ? 
+                        <button 
+                        onClick={handleLogOut}
+                        className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
+                            Log Out
+                        </button>
+                        : <Link to="/login">
+                        <button className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">
+                            Login
+                        </button>
+                    </Link>
+                }
+
             </div>
         </div>
     );
