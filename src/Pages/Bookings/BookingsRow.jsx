@@ -2,7 +2,7 @@
 
 const BookingsRow = ({booking, handleDelete, handleConfirm}) => {
 
-    const { _id, customerName, date, price, service, email, image } = booking;
+    const { _id, customerName, date, price, service, email, image, status } = booking;
     console.log(booking);
 
     
@@ -43,9 +43,17 @@ const BookingsRow = ({booking, handleDelete, handleConfirm}) => {
                         <td>{date}</td>
                         <td>${price}</td>
                     <th>
-                    <button 
-                    onClick={()=> {handleConfirm(_id)}}
-                    className="btn btn-ghost btn-xs">Confirm</button>
+                        {
+                            status === 'confirm' ?
+                                <span 
+                                    className="font-bold bg-green-500 text-white rounded-md md:py-2 md:px-5">Confirmed
+                                </span>
+                            : 
+                                <button 
+                                    onClick={()=> {handleConfirm(_id)}}
+                                    className="btn btn-ghost btn-xs">Confirm It
+                                </button>
+                        }
             </th>
         </tr>
     );

@@ -53,6 +53,13 @@ const Bookings = () => {
             .then(data => {
                 console.log(data);
                 // Confirm from cart--------------------------->
+                if (data.modifiedCount > 0) {
+                    const remaining = bookings.filter(booking => booking._id !== id);
+                    const updated = bookings.find(booking => booking._id === id);
+                    updated.status = 'confirm';
+                    const newBooking = [updated, ...remaining]
+                    setBookings(newBooking)
+                }
             })
         }
     }
