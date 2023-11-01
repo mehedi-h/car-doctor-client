@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const CheckOut = () => {
 
     const service = useLoaderData();
+    console.log(service);
     const { _id, title, price, img } = service;
     const { user } = useContext(AuthContext)
 

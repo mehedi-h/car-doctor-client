@@ -111,7 +111,9 @@ const Navbar = () => {
                 </button>
                 {
                     user?.email? <>
-                        <Link to="/bookings">My Bookings</Link>
+                        <div className="md:mr-2 bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm ">
+                            <Link to="/bookings">My Cart</Link>
+                        </div>
                         <button 
                         onClick={handleLogOut}
                         className="bg-orange-500 hover:bg-orange-600 text-white md:py-2 md:px-5 rounded-sm">

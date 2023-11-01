@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import BookingsRow from "./BookingsRow";
 
 
+
 const Bookings = () => {
 
     const { user } = useContext(AuthContext)
@@ -12,8 +13,49 @@ const Bookings = () => {
     useEffect( () => {
         fetch(url)
         .then(res => res.json())
-        .then(data => setBookings(data))
+        .then(data => {
+            console.log(data);
+            setBookings(data) 
+        })
+        
     }, [])
+
+    const handleDelete = id => {
+        const proceed = confirm('Are you sure! You want to delete it?');
+        if (proceed) {
+            fetch(`http://localhost:5000/checkouts/${id}`,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    // Deleted from cart--------------------->
+                    alert('Service Deleted Successfully')
+                    const remaining = bookings.filter(booking => booking._id !== id);
+                    setBookings(remaining)
+                }
+            })
+        }
+    }
+
+    const handleConfirm = id => {
+        const status = confirm('Are you sure! You want to confirm it?')
+        if (status) {
+            fetch(`http://localhost:5000/checkouts/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({status: 'confirm'})
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // Confirm from cart--------------------------->
+            })
+        }
+    }
 
     return (
         <div>
@@ -24,9 +66,6 @@ const Bookings = () => {
                     <thead>
                         <tr>
                             <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
                             </th>
                             <th>Image</th>
                             <th>Name</th>
@@ -40,7 +79,11 @@ const Bookings = () => {
 
                     <tbody>
                         {
-                            bookings.map(booking => <BookingsRow key={bookings._id} booking={booking}></BookingsRow>)
+                            bookings.map(booking => <BookingsRow 
+                                key={bookings._id} 
+                                handleDelete={handleDelete}
+                                handleConfirm={handleConfirm}
+                                booking={booking}></BookingsRow>)
                         } 
                     </tbody>
                 </table>
